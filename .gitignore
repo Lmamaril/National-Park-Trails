@@ -1,2 +1,4 @@
 .README.md.swp
 .ipynb_checkpoints/
+.DS_Store
+visualize/.DS_Store
