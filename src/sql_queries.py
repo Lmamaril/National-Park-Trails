@@ -37,6 +37,5 @@ create_table_query = """
     PRIMARY KEY ((state_name), difficulty_rating));
     """
 
-
 # INSERT DATA
 # READ DATA
