@@ -6,15 +6,7 @@ SQL Queries to assist with:
 - Reading data from the database
 """
 
-tables_names = ["trail_popularity", "top_elevation_gain_parks", "medium_trails_in_arizona"]
-
-# DROP TABLES
-def drop_table(table_name):
-    drop_table_query = "DROP TABLE IF EXISTS {}".format(table_name)
-    try:
-        session.execute(drop_table_query)
-    except Exception as er:
-        print(er)
+table_names = ["trail_popularity", "top_elevation_gain_parks", "medium_trails_in_arizona"]
 
 # CREATE TABLES
 create_popularity_table_query = """
@@ -28,12 +20,13 @@ create_top_elevation_gain_table_query = """
     (area_name TEXT, elevation_gain FLOAT, 
     PRIMARY KEY(area_name, elevation_gain));
     """
-create_table_query = """
+create_arizona_trails_table_query = """
     CREATE TABLE IF NOT EXISTS medium_trails_in_arizona
     (name TEXT, area_name TEXT, state_name TEXT, 
     difficulty_rating FLOAT, 
     PRIMARY KEY ((state_name), difficulty_rating));
     """
+create_table_queries = [create_popularity_table_query, create_top_elevation_gain_table_query, create_arizona_trails_table_query]
 
 # INSERT DATA
 load_popularity_query = """
@@ -49,6 +42,8 @@ load_med_arizona_trails_query = """
     VALUES (%s, %s, %s, %s);
     """
 
+load_queries = {"popularity": load_popularity_query, "elevation_gain": load_elevation_query, "arizona_trails": load_med_arizona_trails_query}
+
 # READ DATA
 read_popularity_query = "SELECT * FROM trail_popularity LIMIT 2;"
 read_elevation_query = """
@@ -60,3 +55,4 @@ read_med_arizona_trails_query = """
     SELECT name, area_name FROM medium_trails_in_arizona
     WHERE state_name = 'Arizona' AND difficulty_rating = 3;
     """
+read_queries = [read_popularity_query, read_elevation_query, read_med_arizona_trails_query]
