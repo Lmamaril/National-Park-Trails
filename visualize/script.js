@@ -21,6 +21,7 @@ var margin = {
        left: 220
 };
 
+// define wideth and height
 var width = 600 - margin.left - margin.right;
 var height = 460 - margin.top - margin.bottom;
 
