@@ -5,13 +5,7 @@ var trailData =
 ["Clouds Rest Trail via Tenaya Lake", "Yosemite National Park", 948.8424]]
 
 // adding the elevation gain header
-d3.select("body").append("h4").text("Elevation Gain")
-
-d3.select("body").selectAll("p")
-    .data(trailData)
-    .enter()
-    .append("p")
-    .text(function(trail) {return trail[0] + " " + trail[2]})
+d3.select("#elevationGraph").append("h4").text("Elevation Gain")
 
 // Horizontal bar graph attempt
 var margin = {
